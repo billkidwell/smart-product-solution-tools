@@ -71,3 +71,5 @@ aws iot update-ca-certificate \
 
 # Download the AWS IoT Root Certificate
 curl -o ./root.cert https://www.amazontrust.com/repository/AmazonRootCA1.pem
+
+cd ..
