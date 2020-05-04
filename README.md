@@ -60,6 +60,60 @@ From a bash prompt, run the following command
 ```
 
 ### Create and Configure a Device Certificate
-From a bash prompt, run the following command
+From a bash prompt, run the following commands to prepare the application
+```
+cd provision && npm install
+```
+
+After the install, or on subsequent executions, run the following command
+```
+cd provision && node .
+```
+
+You should see output similar to the following
+```
+$ cd provision && node .
+✔ Generate a UUID for the serial number
+✔ Create a device directory
+✔ Create a certificate signing request
+✔ Create a device certificate file
+✔ Create a copy of the device information on disk
+✔ Update db with serial number, model number and device detail.
+
+Device Information
+=========================================================================================================
+Serial Number: 048ede4d-79e1-4b0e-8e24-995b6f7cec26
+Model Number: test-model
+=========================================================================================================
+Cert package for the device
+/provision/devices/048ede4d-79e1-4b0e-8e24-995b6f7cec26/certs.tar.gz
+✔ Create .env for the simulator
+```
+
+The Device information is used in the Just-in-time registration process.
+
+### Running the simulator
+The cert package is used in the simulator.  Unzip the files in the simulator folder.
+This places a .env file, and a certs folder with necessary certificates.
 
 
+The first time you run the simulator, you must install the necessary node packages
+```
+cd simulator && npm install && cd ..
+```
+
+From that point forward, you can run the simulator with the following command
+```
+cd simulator && npm start
+```
+
+### Register the Simulated Smart Product
+After you provision your simulated device and run the simulator, you must complete the registration using the web console.
+
+In the web console, select **Register a device**.
+
+Enter the `serial number` and `model number` that was output by the provision script.  Provide a name of your choosing.
+
+Select Register.
+
+When your instance or device successfully connects to AWS IoT, you will start to see simulated logs. You can modify the config.js file to change your demo simulator configuration. For example, you can modify the interval at which simulated data is sent.
