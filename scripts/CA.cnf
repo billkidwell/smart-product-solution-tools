@@ -1,0 +1,18 @@
+[ req ]
+distinguished_name       = req_distinguished_name
+extensions               = v3_ca
+req_extensions           = v3_ca
+prompt                   = no
+
+[ v3_ca ]
+basicConstraints         = CA:TRUE
+
+[ req_distinguished_name ]
+# Leave as long names as it helps documentation
+countryName=		    US
+stateOrProvinceName=	Kentucky
+localityName=		    Lexington
+organizationName=	    Big Ass Fans
+organizationalUnitName=	IT
+commonName=	            bigassfans.com
+emailAddress=		    bill.kidwell@bigassfans.com
